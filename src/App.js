@@ -1,30 +1,29 @@
 import './App.css';
-const UserTest = {
-  firstName: "Osama",
-  lastName: "Ahmad"
-};
-function formatUserName(user){
-  return `${user.firstName} ${user.lastName}`;
-}
-function getGreeting(user){
-  if(user){
-    return <h1>Hello, {formatUserName(user)}!</h1>
-  }
-  return <h1>Hello, Stranger.</h1>
-}
 function App() {
   return (
     <>
-    <nav>
-      <li>Home</li>
-      <li>About</li>
-      <li>Contact</li>
-    </nav>
-    <img src="" alt="" />
-    <div className="container">
-      <h1>{getGreeting()}</h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae voluptates, cumque distinctio maxime corrupti temporibus hic nulla explicabo. Dolorum praesentium ea, beatae nisi voluptates expedita itaque harum impedit amet. Vero facilis provident illo enim.
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="/">TextUtils</a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <a className="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="/">About</a>
+        </li>
+      </ul>
+      <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <button className="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
+  </div>
+</nav>
     </>
   );
 }
