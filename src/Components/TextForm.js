@@ -13,17 +13,23 @@ export default function TextForm(props) {
     const handleClearClick = () => {
         setText('');
     }
+    const handleCopyClick = () => {
+        let textBox = document.querySelector("textarea");
+        textBox.select();
+        navigator.clipboard.writeText(textBox.value);
+    }
+    const handleExtraSpaces = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
     const handlepascalCaseClick = () => {
         // Conventional Method
-        let textToCamelCase = text;
-        let textArr = textToCamelCase.trim().split(" ");
-        let finalText = '';
-        textArr.forEach(word => {
-            let tempWord = word.slice(1);
-            console.log(tempWord);
-            finalText += (word[0].toUpperCase() + (tempWord.length > 0 ? tempWord.toLowerCase() : "")) + " ";
+        let words = text.trim().split(" ");
+        let result = "";
+        words.forEach(word => {
+            result += (word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) + " ";
         });
-        setText(finalText);
+        setText(result);
     }
     const handleOnChange = (e) => {
         setText(e.target.value);
@@ -41,6 +47,8 @@ export default function TextForm(props) {
             <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to LowerCase</button>
             <button className="btn btn-primary mx-1" onClick={handlepascalCaseClick}>Convert to PascalCase</button>
             <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
+            <button className="btn btn-primary mx-1" onClick={handleCopyClick}>Copy Text</button>
+            <button className="btn btn-primary mx-1 my-2" onClick={handleExtraSpaces}>Handle Extra Spaces</button>
         </div>
         <div className="container my-3">
             <h2>Your Text Summary</h2>
